@@ -1,2 +1,2 @@
-# Plan-semanal-nutrici-n-fuerza-
-Planes nutricionales y fuerza 
+# PRS-Nutricion&fuerza Mitxel
+Planes semanales nutricionales y fuerza 
