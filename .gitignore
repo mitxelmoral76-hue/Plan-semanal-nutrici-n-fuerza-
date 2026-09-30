@@ -7,3 +7,7 @@ next-env.d.ts
 revision/
 dist/
 .netlify/
+
+# Datos de clientes (salud): nunca al repositorio
+sitio/p
+sitio/leeme.txt
