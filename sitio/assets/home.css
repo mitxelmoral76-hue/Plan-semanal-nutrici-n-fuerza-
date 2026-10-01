@@ -138,3 +138,56 @@
   .plan:hover{transform:none}
   .steps .fill{transition:none}
 }
+
+
+/* ===== pasada de diseño: profundidad, ritmo y detalles ===== */
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:
+  radial-gradient(60% 50% at 88% 8%,color-mix(in srgb,var(--amber) 22%,transparent),transparent 70%),
+  radial-gradient(50% 45% at 4% 92%,color-mix(in srgb,var(--c-pro) 14%,transparent),transparent 70%)}
+.hero h1{animation:rise .9s var(--ease) both}
+.hero .lead,.hero .who{animation:rise .9s .12s var(--ease) both}
+.demo{animation:rise 1s .2s var(--ease) both;background:linear-gradient(180deg,var(--card),color-mix(in srgb,var(--card) 90%,var(--paper-2)));box-shadow:var(--shadow-2),0 0 0 1px color-mix(in srgb,var(--line) 60%,transparent)}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.demo-h b::before{content:"";display:inline-block;width:9px;height:9px;margin-right:10px;border-radius:50%;background:var(--c-fat);box-shadow:0 0 0 4px color-mix(in srgb,var(--c-fat) 25%,transparent);vertical-align:1px}
+.iso .bar{filter:drop-shadow(7px 9px 7px rgba(15,51,64,.2))}
+.iso .daylbl{font:800 13px var(--f-display);fill:var(--muted);text-anchor:middle}
+.iso .daylbl.sel{fill:var(--ink)}
+.seg button{box-shadow:var(--shadow-1)}
+.seg button[aria-pressed="true"]{box-shadow:0 0 0 1px var(--amber)}
+.type{box-shadow:var(--shadow-1)}
+.type.on{box-shadow:0 0 0 1px var(--amber),var(--shadow-1)}
+
+/* pasos */
+.st .n{box-shadow:var(--shadow-1)}
+.steps.lit .st .n{box-shadow:0 10px 24px color-mix(in srgb,var(--amber) 45%,transparent)}
+.st{position:relative}
+.st::after{content:attr(data-n);position:absolute;right:0;bottom:-14px;font:800 4.5rem/1 var(--f-display);letter-spacing:-.05em;color:color-mix(in srgb,var(--ink) 6%,transparent);pointer-events:none}
+
+/* la app: halo y tarjetas flotantes */
+.app{position:relative;overflow:hidden}
+.app::before{content:"";position:absolute;right:-10%;top:10%;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--amber) 22%,transparent),transparent 65%);pointer-events:none}
+.app .wrap{position:relative}
+.fl{position:absolute;z-index:3;display:flex;gap:10px;align-items:center;background:color-mix(in srgb,var(--card) 94%,transparent);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:10px 14px;box-shadow:var(--shadow-2);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);animation:float 7s ease-in-out infinite}
+.fl b{display:block;font:800 .88rem/1.2 var(--f-text)}
+.fl span{font-size:.78rem;color:var(--muted)}
+.fl i{width:10px;height:10px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px color-mix(in srgb,var(--amber) 28%,transparent);flex:0 0 10px}
+.fl1{left:-17%;top:48%}
+.fl2{right:-16%;bottom:14%;animation-delay:-3.5s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* planes */
+.plan{box-shadow:var(--shadow-1)}
+.plan .pico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--amber-soft);color:var(--amber-text)}
+.plan.dark .pico{background:rgba(255,255,255,.1);color:var(--on-deep-amber)}
+.plan .pico svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.plan.dark{box-shadow:var(--shadow-2)}
+
+/* preguntas y cierre */
+.faq details{transition:background .2s}
+.faq details[open]{background:color-mix(in srgb,var(--card) 55%,transparent)}
+.faq details[open] summary{color:var(--amber-text)}
+.final{box-shadow:0 30px 70px color-mix(in srgb,var(--amber) 35%,transparent);background:linear-gradient(135deg,color-mix(in srgb,var(--amber) 88%,#fff),var(--amber) 55%,color-mix(in srgb,var(--amber) 85%,#000))}
+
+@media (max-width:920px){.fl1{left:2%;top:6%}.fl2{right:2%;bottom:2%}.st::after{font-size:3.5rem}}
+@media (max-width:560px){.fl{display:none}}
+@media (prefers-reduced-motion:reduce){.hero h1,.hero .lead,.hero .who,.demo,.fl{animation:none}}

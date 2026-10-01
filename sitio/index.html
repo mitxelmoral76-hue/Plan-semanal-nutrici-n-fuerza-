@@ -119,11 +119,11 @@
     <div class="head rv"><span class="kicker" data-n="01">Cómo funciona</span><h2>Tres pasos, y sabes qué toca cada día.</h2></div>
     <div class="steps rv" id="steps">
       <span class="fill"></span>
-      <div class="st"><div class="n"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4h6v3H9zM9 12h6M9 16h4"/></svg><span class="sr-only">Paso 1</span></div>
+      <div class="st" data-n="01"><div class="n"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4h6v3H9zM9 12h6M9 16h4"/></svg><span class="sr-only">Paso 1</span></div>
         <div><span class="tm">10 minutos</span><h3>Cuéntame tu semana</h3><p>Un cuestionario: objetivo, horarios de cada día, entrenos, qué te sienta mal y qué no te gusta.</p><a class="lk" href="#elige-plan">Elegir cuestionario →</a></div></div>
-      <div class="st"><div class="n"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></svg><span class="sr-only">Paso 2</span></div>
+      <div class="st" data-n="02"><div class="n"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></svg><span class="sr-only">Paso 2</span></div>
         <div><span class="tm">30 minutos</span><h3>Hablamos y lo preparo</h3><p>Llamada para afinar detalles. En 2–4 días preparo tu planificación a partir de tus respuestas.</p><a class="lk" href="https://calendly.com/mitxelmoral76/llamada-inicial-plan-nutricional" target="_blank" rel="noopener">Ver horarios →</a></div></div>
-      <div class="st"><div class="n"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="3"/><path d="M11 18h2"/></svg><span class="sr-only">Paso 3</span></div>
+      <div class="st" data-n="03"><div class="n"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="3"/><path d="M11 18h2"/></svg><span class="sr-only">Paso 3</span></div>
         <div><span class="tm">Cada semana</span><h3>La llevas en el móvil</h3><p>Tu semana día a día, con horas y cantidades. Revisamos y ajustamos cuando cambie tu vida.</p><a class="lk" href="#la-app">Ver la app →</a></div></div>
     </div>
   </div>
@@ -144,7 +144,9 @@
       <a class="btn" href="app/demo/">Abrir la app de ejemplo →</a>
       <p class="note">Se instala en la pantalla de inicio. Tus datos solo se usan para preparar tu planificación.</p>
     </div>
-    <div class="phone3d rv"><div class="phone"><iframe src="app/demo/?embed=1" title="App de ejemplo del plan semanal" loading="lazy"></iframe></div></div>
+    <div class="phone3d rv"><div class="phone"><iframe src="app/demo/?embed=1" title="App de ejemplo del plan semanal" loading="lazy"></iframe></div>
+      <div class="fl fl1" aria-hidden="true"><i></i><div><b>Avisos a cada hora</b><span>Te recuerda cada toma y entreno</span></div></div>
+      <div class="fl fl2" aria-hidden="true"><div><b>Marcas lo que haces</b><span>Comidas, series y descansos</span></div></div></div>
   </div>
 </section>
 
@@ -154,13 +156,13 @@
     <div class="head rv"><span class="kicker" data-n="03">Elige tu plan</span><h2>Nutrición, fuerza o los dos.</h2><p>Rellena uno o los dos cuestionarios. Con tus respuestas y una llamada de 30 minutos preparo tu planificación.</p></div>
     <div class="plans rv">
       <article class="plan card">
-        <span class="tag">Nutrición</span>
+        <span class="pico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 0 0 2 2 2 2 0 0 0 2-2V3M7 11v10M17 21V3c-2.2 1-3.5 3.6-3.5 7 0 1.8.9 3 2.5 3h1"/></svg></span><span class="tag">Nutrición</span>
         <h3>Planificación de comidas</h3>
         <ul><li>Comida real adaptada al horario de cada día</li><li>Hidratos según la carga de entreno</li><li>Tus gustos, alergias y ritmo de vida</li></ul>
         <a class="btn dark" href="https://tally.so/r/QKPr2g" target="_blank" rel="noopener">Cuestionario de nutrición · 10 min</a>
       </article>
       <article class="plan dark">
-        <span class="tag">Fuerza</span>
+        <span class="pico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/></svg></span><span class="tag">Fuerza</span>
         <h3>Plan de fuerza</h3>
         <ul><li>Sesiones según tu objetivo y tu experiencia</li><li>Encajadas con trabajo, deporte y descanso</li><li>Con tu material y tus lesiones en cuenta</li></ul>
         <a class="btn" href="https://tally.so/r/Y5NaB0" target="_blank" rel="noopener">Cuestionario de fuerza · 8 min</a>
@@ -216,8 +218,16 @@
 
 <footer>
   <div class="wrap">
-    <span>© 2026 PRS alimentación&amp;fuerza Mitxel · Plan Real Semanal · País Vasco · Servicio no sanitario: no sustituye a un médico ni a un dietista-nutricionista</span>
-    <div class="lks"><a href="mailto:mitxelmoral76@gmail.com">mitxelmoral76@gmail.com</a><a href="aviso-legal/">Aviso legal</a><a href="privacidad/">Privacidad</a><a href="cookies/">Cookies</a></div>
+    <div class="fcols">
+      <div class="fbrand">
+        <a class="logo" href="/#top"><span class="mk">PR</span><span class="lt"><b>PRS</b> <i>alimentación&amp;fuerza</i> <b>Mitxel</b></span></a>
+        <p>Comida real y fuerza, encajadas en tu horario. País Vasco.</p>
+      </div>
+      <div><h4>Servicio</h4><ul><li><a href="/#como">Cómo funciona</a></li><li><a href="/#la-app">La app</a></li><li><a href="/#elige-plan">Elegir plan</a></li><li><a href="/#faq">Preguntas</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="/aviso-legal/">Aviso legal</a></li><li><a href="/privacidad/">Privacidad</a></li><li><a href="/cookies/">Cookies</a></li></ul></div>
+      <div><h4>Contacto</h4><ul><li><a href="mailto:mitxelmoral76@gmail.com">mitxelmoral76@gmail.com</a></li><li><a href="https://calendly.com/mitxelmoral76/llamada-inicial-plan-nutricional" target="_blank" rel="noopener">Reservar llamada</a></li></ul></div>
+    </div>
+    <p class="fbase">© 2026 PRS alimentación&amp;fuerza Mitxel · Plan Real Semanal · Servicio no sanitario: no sustituye a un médico ni a un dietista-nutricionista.</p>
   </div>
 </footer>
 <div class="stick"><a class="btn" href="#elige-plan">Elegir mi plan</a></div>

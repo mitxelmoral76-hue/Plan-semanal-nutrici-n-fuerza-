@@ -83,6 +83,12 @@
       const x = i * (W + GAP) + W / 2, a = P(x, -18, 0), b = P(x, DEPTH + 18, 0);
       svgEl("line", { class: "rail", x1: a[0], y1: a[1], x2: b[0], y2: b[1] }, svg);
     }
+    const dayLbls = LET.map((l, i) => {
+      const [x, y] = P(i * (W + GAP) + W / 2, DEPTH + 26, 0);
+      const t = svgEl("text", { class: "daylbl", x: x.toFixed(1), y: (y + 4).toFixed(1) }, svg);
+      t.textContent = l;
+      return t;
+    });
     const cur = state.map(() => 0);
     const bars = state.map(() => {
       const grp = makeBoxGroup(svg, "bar");
@@ -133,6 +139,7 @@
         c.setAttribute("aria-label", `${DAYS[i]}: ${TYPES[state[i]].n}. Pulsa para cambiarlo.`);
       });
       $$(".bar", svg).forEach((g, i) => g.classList.toggle("sel", i === sel));
+      dayLbls.forEach((t, i) => t.classList.toggle("sel", i === sel));
       typesHost.innerHTML = TYPES.map((ty, k) => {
         const x = macros(kg, ty.load, goal);
         return `<div class="type${state[sel] === k ? " on" : ""}"><h3>${ty.n}</h3><div class="k">${fmt(r10(x.kcal))}<small>kcal</small></div><div class="d">${fmt(x.c)} g hidratos<br>${fmt(x.p)} g proteína</div></div>`;
@@ -212,6 +219,12 @@
     stage.addEventListener("pointerleave", () => { phone.style.removeProperty("--ry"); phone.style.removeProperty("--rx"); });
   }
 
-  const boot = () => { initDemo(); initReveal(); initPhoneTilt(); };
+  function initProgress() {
+    const root = document.documentElement;
+    const set = () => { const m = root.scrollHeight - innerHeight; root.style.setProperty("--p", m > 0 ? Math.min(1, scrollY / m).toFixed(3) : 0); };
+    addEventListener("scroll", set, { passive: true }); addEventListener("resize", set); set();
+  }
+
+  const boot = () => { initDemo(); initReveal(); initPhoneTilt(); initProgress(); };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot); else boot();
 })();
