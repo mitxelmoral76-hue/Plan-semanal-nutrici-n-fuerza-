@@ -1,0 +1,13 @@
+node_modules
+.next
+.env*.local
+next-env.d.ts
+*.tsbuildinfo
+
+revision/
+dist/
+.netlify/
+
+# Datos de clientes (salud): nunca al repositorio
+sitio/p
+sitio/leeme.txt
