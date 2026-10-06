@@ -25,4 +25,4 @@ Levanta un servidor local con la carpeta de la web, abre **cada `index.html`** (
 - Los enlaces externos (Tally, Calendly, correo) **no** se comprueban desde aquí: ábrelos a mano o dilo en el resumen.
 - Las fuentes de Google pueden no cargar en entornos sin internet; no es un fallo de la web.
 - No modifiques archivos de la web durante la revisión: solo informa. Los arreglos se proponen y se aplican con el OK de Mitxel.
-- No subas `revision/` a Netlify ni a git (añádela al `.gitignore`).
+- No subas `revision/` a Cloudflare ni a git (añádela al `.gitignore`).

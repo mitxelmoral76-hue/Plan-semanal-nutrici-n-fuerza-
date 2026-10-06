@@ -1,29 +1,32 @@
 ---
 name: publicar
-description: Publica la web PRSMITXEL en Netlify (proyecto prsmitxel) en dos pasos - primero vista previa, y producción solo cuando Mitxel diga "publica". Úsala cuando pida "publica", "vista previa" o "sube la web".
+description: Prepara la web PRS Mitxel para publicarla en Cloudflare Pages (proyecto prsnutricionyfuerza, subida arrastrando la carpeta o el zip) en dos pasos - primero vista previa, y producción solo cuando Mitxel diga "publica". Úsala cuando pida "publica", "vista previa" o "sube la web".
 ---
 
-# Publicar
+# Publicar (Cloudflare Pages · subida directa)
+
+Web oficial: https://prsnutricionyfuerza.pages.dev/ · La raíz del sitio es la carpeta `sitio/` del repo.
 
 ## Reglas
-- **Nunca** `--prod` sin un "publica" u OK explícito de Mitxel **después** de ver la vista previa.
-- No cambiar las rutas `/p/` de los clientes ni crear un proyecto nuevo en Netlify (usar `netlify link` con el existente `prsmitxel`).
-- No subir `CLAUDE.md`, `.claude/`, `.git/`, `revision/`, `dist/`, `.netlify/` ni `node_modules/`.
+- **Nunca** presentar algo como "publicado" ni indicar subir a producción sin un "publica" u OK explícito de Mitxel **después** de ver la vista previa.
+- Desde el entorno en la nube **no hay acceso** a Cloudflare: yo preparo el zip y Mitxel lo sube a mano.
+- No cambiar las rutas `/p/` de los clientes.
+- Una subida **sustituye todo el sitio**: el zip debe llevar todas las carpetas (`p/`, `app/`, `assets/`, `ig/`, páginas legales…), no solo lo que cambia.
+- **No incluir en el zip:** `leeme.txt` (tiene los enlaces privados de los clientes), `revision/`, `CLAUDE.md`, `.claude/`, `.git/`, `node_modules/`, `dist/`.
+- En `p/` solo van las apps que Mitxel haya dado por buenas (no borradores como una app pendiente de visto bueno médico).
 - Commit en castellano después de cada cambio aprobado.
 
 ## Pasos
-1. Ejecuta la skill `revisar-web` y resume el resultado. Si hay ⚠ graves, avisa antes de seguir.
-2. Comprueba herramientas: `node -v` y `netlify --version` (si falta: `npm i -g netlify-cli`).
-3. Comprueba sesión y enlace: `netlify status`. Si no hay login: `netlify login`; si no está enlazado: `netlify link` (elegir el sitio existente `prsmitxel`, **no crear uno nuevo**).
-4. Prepara la carpeta limpia `dist/`:
+1. Ejecuta la skill `revisar-web` sobre `sitio/` y resume el resultado. Si hay ⚠ graves, avisa antes de seguir.
+2. Comprueba que `sitio/_headers` sigue teniendo `noindex` para `/p/*` y `/ig/*`.
+3. Prepara el zip (sin `rsync`, que no está instalado):
    ```
-   rm -rf dist && mkdir dist
-   rsync -a --exclude='.git' --exclude='.claude' --exclude='.netlify' --exclude='node_modules' --exclude='revision' --exclude='dist' --exclude='CLAUDE.md' --exclude='src' --exclude='supabase' --exclude='package*.json' ./ dist/
+   cd sitio && zip -rq ../web-prs-cloudflare.zip . -x 'leeme.txt' 'revision/*' '.DS_Store' '*/.DS_Store'
    ```
-5. **Vista previa** (sin `--prod`): `netlify deploy --dir dist`. Enseña a Mitxel la URL del borrador y espera.
-6. Solo con su "publica": `netlify deploy --dir dist --prod`. Comprueba que la URL de producción carga y que `/p/` sigue con noindex.
-7. `git add -A && git commit -m "Publicado: <qué cambia>"`.
+   Coloca el zip en la carpeta de trabajo y entrégalo a Mitxel. Dile qué apps de `p/` incluye.
+4. **Vista previa:** Mitxel entra en dash.cloudflare.com → Workers & Pages → `prsnutricionyfuerza` → *Create new deployment*, arrastra el zip (o la carpeta descomprimida) y elige la rama de **vista previa**. Cloudflare le da una URL de borrador; me la pasa o la revisa él.
+5. Solo con su "publica": repite la subida eligiendo la rama de **producción** (la rama de producción del proyecto). Después comprueba que https://prsnutricionyfuerza.pages.dev/ carga y que cualquier `/p/…` devuelve la cabecera `X-Robots-Tag: noindex`.
+6. `git add -A && git commit -m "Publicado: <qué cambia>"`.
 
-## Si no hay acceso a Netlify (p. ej. entorno en la nube sin red a api.netlify.com)
-Prepara `dist/` igual (paso 4), genera un zip con **toda** la carpeta (`cd dist && zip -r ../web-prsmitxel.zip .`) y entrégalo a Mitxel para arrastrarlo a Netlify > Deploys.
-Avisa siempre: arrastrar un zip **sustituye todo el sitio**, así que debe contener todas las carpetas (`p/`, `app/`, `assets/`…) y `leeme.txt`.
+## Si más adelante se conecta el repo a Cloudflare Pages
+Con integración con GitHub, cada push a la rama de producción publica solo. En ese caso: carpeta de salida = `sitio`, sin comando de build, y `sitio/p/` (que está en `.gitignore`) **no** se subiría: las apps de clientes tendrían que seguir subiéndose por subida directa. Por eso conviene mantener la subida manual mientras `p/` no esté en git.

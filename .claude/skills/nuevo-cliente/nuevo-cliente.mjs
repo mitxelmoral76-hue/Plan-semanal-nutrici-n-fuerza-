@@ -47,8 +47,8 @@ m.name = `PRSMITXEL · ${plan.client}`;
 fs.writeFileSync(path.join(out, "manifest.webmanifest"), JSON.stringify(m));
 
 const leeme = path.join(ROOT, "leeme.txt");
-const linea = `${nombre.split(/\s+/)[0]}: https://prsmitxel.netlify.app/p/${dir}/\n`;
+const linea = `${nombre.split(/\s+/)[0]}: https://prsnutricionyfuerza.pages.dev/p/${dir}/\n`;
 const prev = fs.existsSync(leeme) ? fs.readFileSync(leeme, "utf8") : "Apps privadas (no indexadas):\n";
 fs.writeFileSync(leeme, prev.endsWith("\n") ? prev + linea : prev + "\n" + linea);
 
-console.log(`Creada p/${dir}/ y añadida a leeme.txt\nEnlace: https://prsmitxel.netlify.app/p/${dir}/\nSiguiente: skill revisar-web, enseñar el resumen a Mitxel y publicar solo con su OK.`);
+console.log(`Creada p/${dir}/ y añadida a leeme.txt\nEnlace: https://prsnutricionyfuerza.pages.dev/p/${dir}/\nSiguiente: skill revisar-web, enseñar el resumen a Mitxel y publicar solo con su OK.`);
