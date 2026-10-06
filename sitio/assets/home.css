@@ -191,3 +191,4 @@
 @media (max-width:920px){.fl1{left:2%;top:6%}.fl2{right:2%;bottom:2%}.st::after{font-size:3.5rem}}
 @media (max-width:560px){.fl{display:none}}
 @media (prefers-reduced-motion:reduce){.hero h1,.hero .lead,.hero .who,.demo,.fl{animation:none}}
+.about p+p{margin-top:var(--s3)}

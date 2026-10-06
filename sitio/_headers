@@ -1,2 +1,6 @@
 /p/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Referrer-Policy: no-referrer
+
+/ig/*
   X-Robots-Tag: noindex

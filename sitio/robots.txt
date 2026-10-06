@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: /p/
+Allow: /
 
-Sitemap: https://prsmitxel.netlify.app/sitemap.xml
+Sitemap: https://prsnutricionyfuerza.pages.dev/sitemap.xml

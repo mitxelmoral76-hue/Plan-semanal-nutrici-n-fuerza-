@@ -156,6 +156,7 @@ select{border:1.5px solid var(--line);background:var(--surface);border-radius:12
 .toast.on{transform:translate(-50%,0)}
 [hidden]{display:none!important}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+.ytb{display:inline-flex;align-items:center;gap:4px;margin-top:6px;font-size:12.5px;font-weight:700;color:var(--brand);background:var(--brand-soft);border-radius:999px;padding:4px 10px;text-decoration:none}.ytb:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
 </style>
 </head>
 <body>
@@ -282,7 +283,7 @@ function renderFuerza(){
         const n=e.s+(e.izq?1:0);let c=0;
         const btns=Array.from({length:n},(_,i)=>{const kk=base+"|"+e.id+"|"+i,on=!!checks[kk];if(on)c++;const iz=e.izq&&i===n-1;
           return `<button class="set num ${iz?"izq":""}" aria-pressed="${on}" data-ck="${kk}" aria-label="Serie ${i+1}${iz?" extra izquierda":""} de ${esc(e.n)}">${iz?"I":i+1}</button>`}).join("");
-        return `<div class="ex ${c===n?"done":""}"><div style="min-width:0"><div class="nm"><a href="${YT(e.n)}" target="_blank" rel="noopener">${esc(e.n)}</a></div><div class="rx"><b>${e.s}${e.izq?"(+1)":""} × ${esc(e.r)}</b> · ${esc(e.o)}</div></div><div class="sets">${btns}</div></div>`}).join("")}</div>`).join("")}
+        return `<div class="ex ${c===n?"done":""}"><div style="min-width:0"><div class="nm"><a href="${esc(e.yt||YT(e.n))}" target="_blank" rel="noopener">${esc(e.n)}</a></div><a class="ytb" href="${esc(e.yt||YT(e.n))}" target="_blank" rel="noopener" aria-label="Ver vídeo de ${esc(e.n)}">▶ Ver vídeo</a><div class="rx"><b>${e.s}${e.izq?"(+1)":""} × ${esc(e.r)}</b> · ${esc(e.o)}</div></div><div class="sets">${btns}</div></div>`}).join("")}</div>`).join("")}
       ${f.club?clubCard(f.club):(f.noClub?`<div class="note">${esc(f.noClub)}</div>`:"")}
       ${(f.notes||[]).map(t=>`<div class="note">${esc(t)}</div>`).join("")}
     </div>`;
