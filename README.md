@@ -1,2 +1,2 @@
-# PRS-Nutricion&fuerza Mitxel
+# PrsMitxel
 Planes semanales nutricionales y fuerza 
