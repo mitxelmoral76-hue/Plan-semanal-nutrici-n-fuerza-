@@ -1,0 +1,13 @@
+Fotos de las recetas
+====================
+Si una receta tiene foto, la app la muestra en lugar de la ilustración.
+Nombre del archivo = identificador de la receta (.jpg), formato 4:3, unos 1200 x 900 px y menos de 200 KB:
+
+  Desayunos:    d1 d2 d3 d4 d5 d6
+  Comidas:      c1 c2 c3 c4 c5 c6 c7
+  Meriendas:    m1 m2 m3
+  Pre-entrenos: p1 p2 p3
+  Cenas:        n1 n2 n3 n4 n5 n6
+
+Ejemplo: assets/recetas/d1.jpg
+Si falta un archivo, no pasa nada: se ve la ilustración.
